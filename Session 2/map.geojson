@@ -1,0 +1,61 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Masjid Raudhatul Irfan"
+      },
+      "geometry": {
+        "coordinates": [106.87319197189265, -6.905943459075701],
+        "type": "Point"
+      },
+      "id": 0
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nusa Putra University"
+      },
+      "geometry": {
+        "coordinates": [106.87351492780044, -6.905129429755021],
+        "type": "Point"
+      },
+      "id": 1
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Campus Area"
+      },
+      "geometry": {
+        "coordinates": [
+          [
+            [106.87371930386234, -6.904849630319617],
+            [106.87334673881753, -6.904819525199358],
+            [106.87323987907587, -6.904891204053698],
+            [106.87322688262157, -6.905573586205321],
+            [106.87363988108217, -6.905573586205321],
+            [106.87371930386234, -6.904849630319617]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "id": 2
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Distance"
+      },
+      "geometry": {
+        "coordinates": [
+          [106.87351470425239, -6.90512859481305],
+          [106.873191900368, -6.905943465300993]
+        ],
+        "type": "LineString"
+      },
+      "id": 3
+    }
+  ]
+}
