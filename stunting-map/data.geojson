@@ -1,0 +1,16 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Puskesmas Sukabumi",
+        "description": "Contoh lokasi pemantauan stunting"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [106.93128, -6.92977]
+      }
+    }
+  ]
+}
