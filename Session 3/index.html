@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GIS Project - Sukabumi Layers</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  </head>
+  <body>
+    <div id="map" style="height: 100vh"></div>
+
+    <script>
+      // map initialization
+      const map = L.map("map").setView([-6.924, 106.926], 11); // pusat di Sukabumi
+
+      // BASE MAPS
+      const osm = L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          attribution: "&copy; OpenStreetMap contributors",
+        }
+      );
+
+      const satellite = L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        { attribution: "&copy; Esri Satellite" }
+      );
+
+      osm.addTo(map); // default layer
+
+      // ===== OVERLAYS =====
+      // Marker (Kantor Bupati Sukabumi)
+      const marker = L.marker([-6.918, 106.926]).bindPopup(
+        "Kantor Bupati Sukabumi"
+      );
+
+      // Polyline (Point A to B)
+      const polyline = L.polyline(
+        [
+          [-6.918, 106.926],
+          [-6.936, 106.944],
+          [-6.95, 106.96],
+        ],
+        { color: "blue" }
+      ).bindPopup("Contoh Rute Jalan");
+
+      // Polygon
+      const polygon = L.polygon(
+        [
+          [-6.92, 106.9],
+          [-6.93, 106.92],
+          [-6.94, 106.9],
+        ],
+        { color: "green", fillOpacity: 0.4 }
+      ).bindPopup("Area Proyek Sukabumi");
+
+      // GeoJSON
+      const geojsonExample = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            properties: { name: "Cikole District" },
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [106.917, -6.924],
+                  [106.927, -6.924],
+                  [106.927, -6.934],
+                  [106.917, -6.934],
+                  [106.917, -6.924],
+                ],
+              ],
+            },
+          },
+        ],
+      };
+
+      const geoLayer = L.geoJSON(geojsonExample, {
+        style: { color: "orange", fillOpacity: 0.3 },
+      }).bindPopup("Kecamatan Cikole (contoh GeoJSON)");
+
+      // ===== Layer Control =====
+      const baseMaps = {
+        OpenStreetMap: osm,
+        Satellite: satellite,
+      };
+
+      const overlayMaps = {
+        Marker: marker,
+        Polyline: polyline,
+        Polygon: polygon,
+        GeoJSON: geoLayer,
+      };
+
+      L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+      // Overlay default
+      marker.addTo(map);
+      polyline.addTo(map);
+      polygon.addTo(map);
+      geoLayer.addTo(map);
+    </script>
+  </body>
+</html>
